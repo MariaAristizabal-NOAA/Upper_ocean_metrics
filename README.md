@@ -9,7 +9,7 @@ The metrics are:
 - Potential energy anomaly in the top 100 meters
 
 *********************************************************************************************
-Installation Instructions (coming up soon)
+Installation Instructions
 
 1. Add the channel conda-forge to your .condarc. You can find out more about conda-forge from their website: https://conda-forge.org/
 

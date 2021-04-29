@@ -8,8 +8,6 @@ def OHC_from_profile(depth,temp,dens):
     # Inputs: 1D vectors depth, temperature and density
     # Output: Ocean heat content of the water column in kJ/cm^2
 
-    import numpy as np
-
     cp = 3985 #Heat capacity in J/(kg K)
     ok26 = temp >= 26
     depth = np.abs(depth)
@@ -36,8 +34,6 @@ def MLD_temp_crit(dtemp,ref_depth,depth,temp):
     # Output
     # MLD and MLT: mixed layer depth and Mixed layer temperature
 
-    import numpy as np
-
     ok_ref_depth = np.where(depth >= ref_depth)[0][0]
     temp_ref_depth = temp[ok_ref_depth]
     delta_T = temp_ref_depth - temp
@@ -63,8 +59,6 @@ def MLD_dens_crit(drho,ref_depth,depth,temp,dens):
     # Output
     # MLD and MLT: mixed layer depth and Mixed layer temperature
 
-    import numpy as np
-
     ok_ref_depth = np.where(depth >= ref_depth)[0][0]
     rho_ref_depth = dens[ok_ref_depth]
     delta_rho = -(rho_ref_depth - dens)
@@ -88,8 +82,6 @@ def T100(depth,temp):
     # Output
     # T100: depth average temperature in the top 100 meters
 
-    import numpy as np
-
     okd = np.abs(depth) <= 100
     if len(np.where(np.isnan(temp[okd]))[0])>10:
         T100 = np.nan
@@ -107,8 +99,6 @@ def Potential_energy_anomaly100(depth,dens):
     # depth, dens: 1D vectors depth and density
     # Output
     # PEA: potential energy anomaly in J/m^3
-
-    import numpy as np
 
     g = 9.8 #m/s
     dindex = np.fliplr(np.where(np.asarray(np.abs(depth)) <= 100))[0]

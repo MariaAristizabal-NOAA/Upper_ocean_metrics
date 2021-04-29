@@ -31,6 +31,10 @@ conda env create -f environment.yml
 
 conda activate env-UppOceanMetr
 
+6. Run Working_examples.py to make the repository was installed correctly. 
+
+7. Check Working_examples.py to see examples of how to use the different functions
+
 
 
 

@@ -1,4 +1,6 @@
 
+import numpy as np
+
 ################################################################################
 def OHC_from_profile(depth,temp,dens):
     # This function Calculates the ocean heat content from a temperature and

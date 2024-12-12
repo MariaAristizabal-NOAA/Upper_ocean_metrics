@@ -85,10 +85,15 @@ def T100(depth,temp):
     # T100: depth average temperature in the top 100 meters
 
     okd = np.abs(depth) <= 100
-    if len(np.where(np.isnan(temp[okd]))[0])>10:
-        T100 = np.nan
-    else:
-        T100 = np.nanmean(temp[okd])
+    if len(depth[okd]) != 0:
+        if len(np.where(np.isnan(temp[okd]))[0])>10:
+            T100 = np.nan
+        else:
+            okv = np.isfinite(temp[okd])
+            tempp = temp[okd][okv]
+            dept = np.abs(depth[okd][okv])
+            T100 = np.trapz(tempp,dept)/100
+
     return T100
 
 ################################################################################

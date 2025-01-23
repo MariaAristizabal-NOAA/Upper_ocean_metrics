@@ -51,7 +51,7 @@ def MLD_temp_crit(dtemp,ref_depth,depth,temp):
     return MLD, MLT
 
 ################################################################################
-def MLD_dens_crit(drho,ref_depth,depth,temp,dens):
+def MLD_dens_crit(drho,ref_depth,depth,temp,salt,dens):
     # This function calculates the mixed layer depth and Mixed layer temperature
     # based on a density criteria: rho_at_ref_depth - rho <= drho
     # Inputs
@@ -59,7 +59,8 @@ def MLD_dens_crit(drho,ref_depth,depth,temp,dens):
     # ref_depth: Reference depth from the mixed layer depth definition used
     # depth, temp and dens: 1D vectors depth, temperature and density
     # Output
-    # MLD and MLT: mixed layer depth and Mixed layer temperature
+    # MLD: mixed layer depth
+    # MLT and MLS: mixed layer temperature and mixed layer salinity
 
     ok_ref_depth = np.where(depth >= ref_depth)[0][0]
     rho_ref_depth = dens[ok_ref_depth]
@@ -69,11 +70,13 @@ def MLD_dens_crit(drho,ref_depth,depth,temp,dens):
     if ok_mld_rho.size == 0:
         MLD = np.nan
         MLT = np.nan
+        MLS = np.nan
     else:
         MLD = depth[ok_mld_rho[-1]]
         MLT = np.nanmean(temp[ok_mld_rho])
+        MLS = np.nanmean(salt[ok_mld_rho])
 
-    return MLD, MLT
+    return MLD, MLT, MLS
 
 ################################################################################
 def T100(depth,temp):
